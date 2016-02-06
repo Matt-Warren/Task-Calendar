@@ -33,9 +33,9 @@ public class ActivityFragment extends Fragment {
 
     TextView timeView, descriptionView, durationView;
 
-    private String time;
-    private String description;
-    private String duration;
+    private String time ="";
+    private String description="";
+    private String duration="";
 
 
 
@@ -65,9 +65,7 @@ public class ActivityFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        timeView = (TextView) getView().findViewById(R.id.time);
-        descriptionView = (TextView) getView().findViewById(R.id.description);
-        durationView = (TextView) getView().findViewById(R.id.duration);
+
 
 
         if (getArguments() != null) {
@@ -81,6 +79,10 @@ public class ActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_activity, container, false);
+        timeView = (TextView) view.findViewById(R.id.time);
+        descriptionView = (TextView) view.findViewById(R.id.description);
+        durationView = (TextView) view.findViewById(R.id.duration);
+        fillData();
         return view;
     }
 
@@ -94,10 +96,21 @@ public class ActivityFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
+        /*if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }*/
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        try {
+            mListener = (OnFragmentInteractionListener) getActivity();
+        } catch (ClassCastException e) {
+            throw new ClassCastException(getActivity().toString()
                     + " must implement OnFragmentInteractionListener");
         }
     }

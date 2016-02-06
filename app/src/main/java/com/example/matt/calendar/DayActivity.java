@@ -1,5 +1,6 @@
 package com.example.matt.calendar;
 
+import android.net.Uri;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +15,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 
-public class DayActivity extends AppCompatActivity {
+public class DayActivity extends AppCompatActivity implements ActivityFragment.OnFragmentInteractionListener {
 
     public int year;
     public int month;
@@ -41,24 +42,26 @@ public class DayActivity extends AppCompatActivity {
         date = Integer.toString(year) + Integer.toString(month) + Integer.toString(day);
 
         ////////////////////////
-
+        contentId = screen.getId();
 
         if(events.getEvents(date)!=null) {
             Iterator<Event> iter = events.getEvents(date).iterator();
             while (iter.hasNext()) {
                 Event item = iter.next();
                 newAct = new ActivityFragment();
-                newAct.setDescription("Go home");
-                newAct.setDuration("4M");
-                newAct.setTime("4am");
+                newAct.setDescription(item.getDescription());
+                newAct.setDuration(item.getDuration());
+                newAct.setTime(item.getTime());
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                ft.add(screen.getId(),newAct).commit();
+                ft.add(screen.getId(),newAct,"test").commit();
             }
         }
         else
         {
-            events.setEvent(date,new Event("time","Description","duration"));
+            //events.setEvent(date,new Event("T5","DeDang","DurNo"));
         }
+
+
 
         /*Button bTest = (Button)findViewById(R.id.test_button);
         bTest.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +72,9 @@ public class DayActivity extends AppCompatActivity {
             }
         });*/
 
-
+    }
+    @Override
+    public void onFragmentInteraction(Uri uri) {
 
     }
 }
