@@ -70,6 +70,7 @@
             android:layout_height="wrap_content"
             android:imeOptions="actionNext"
             android:layout_span="1"
+            android:maxLength="3"
             android:hint="@string/duration"/>
     </TableRow>
     <TableRow
