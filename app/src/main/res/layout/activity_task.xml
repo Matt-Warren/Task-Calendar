@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,69 +9,126 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.matt.calendar.TaskActivity"
     android:columnCount="3"
+    android:layout_rowSpan="1"
     android:rowCount="10"
     android:orientation="vertical">
 
 
-    <EditText
-        android:id="@+id/task_year"
-        android:inputType="number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:imeOptions="actionNext"
-        android:layout_column="0"
-        android:layout_row="0"
-        android:layout_gravity="fill_horizontal"
-        android:hint="@string/year_text"/>
-    <EditText
-        android:id="@+id/task_month"
-        android:inputType="number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:imeOptions="actionNext"
-        android:layout_column="1"
-        android:layout_row="0"
-        android:layout_gravity="fill_horizontal"
-        android:hint="@string/month_text"/>
-    <EditText
-        android:id="@+id/task_day"
-        android:inputType="number"
-        android:layout_width="match_parent/20dp"
-        android:layout_height="wrap_content"
-        android:imeOptions="actionNext"
-        android:layout_gravity="fill_horizontal"
-        android:layout_column="2"
-        android:layout_row="0"
-        android:hint="@string/day_text"/>
-<!--
-    <EditText
-        android:id="@+id/task_title"
-        android:inputType="text"
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:imeOptions="actionNext"
-        android:layout_column="0"
-        android:layout_row="1"
-        android:layout_gravity="start"
-        android:hint="@string/title_text"/>
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/task_year"
+            android:inputType="number"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:layout_gravity="fill_horizontal"
+            android:maxLength="4"
+            android:hint="@string/year_text"/>
+        <EditText
+            android:id="@+id/task_month"
+            android:inputType="number"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:layout_gravity="fill_horizontal"
+            android:maxLength="2"
+            android:hint="@string/month_text"/>
+        <EditText
+            android:id="@+id/task_day"
+            android:inputType="number"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:layout_gravity="fill_horizontal"
+            android:maxLength="2"
+            android:hint="@string/day_text"/>
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/task_start_time"
+            android:inputType="number"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:layout_span="1"
+            android:hint="@string/start_time"/>
+        <EditText
+            android:id="@+id/task_duration"
+            android:inputType="number"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:layout_span="1"
+            android:hint="@string/duration"/>
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/task_title"
+            android:inputType="text"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:layout_gravity="start"
+            android:layout_span="3"
+            android:hint="@string/title_text"/>
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/task_description"
+            android:inputType="text|textMultiLine"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:minLines="2"
+            android:maxLines="4"
+            android:maxLength="2000"
+            android:layout_height="wrap_content"
+            android:layout_span="3"
+            android:imeOptions="actionNext"
+            android:hint="@string/description"/>
 
-    <EditText
-        android:id="@+id/task_description"
-        android:inputType="text"
+    </TableRow>
+
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:imeOptions="actionNext"
-        android:hint="@string/description"/>
-    <EditText
-        android:id="@+id/task_duration"
-        android:inputType="number"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/add_task"
+            android:layout_weight="1"
+            android:layout_span="3"
+            android:text="@string/add_task">
+
+        </Button>
+    </TableRow>
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:imeOptions="actionNext"
-        android:singleLine="true"
-        android:hint="@string/duration"/>
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/task_test"
+            android:inputType="text|textMultiLine"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:layout_span="3"
+            android:hint="@string/test"/>
+    </TableRow>
+<!--
+
+
+
+
 -->
 
 
 
-</GridLayout>
+</TableLayout>

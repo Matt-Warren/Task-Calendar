@@ -5,9 +5,12 @@
     <string name="date_text">Enter the date of the task here…</string>
     <string name="title_text">Enter the title of the task here…</string>
     <string name="description">Enter the description of the task here…</string>
-    <string name="duration">Enter the duration of the task here</string>
+    <string name="duration">Estimated duration…</string>
+    <string name="start_time">Starting Time…</string>
     <string name="view_task">View Task</string>
     <string name="year_text">YYYY</string>
     <string name="month_text">MM</string>
     <string name="day_text">DD</string>
+    <string name="add_task">Add Task</string>
+
 </resources>
