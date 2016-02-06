@@ -25,6 +25,7 @@
             android:imeOptions="actionNext"
             android:layout_gravity="fill_horizontal"
             android:maxLength="4"
+            android:focusable="false"
             android:hint="@string/year_text"/>
         <EditText
             android:id="@+id/task_month"
@@ -34,6 +35,7 @@
             android:imeOptions="actionNext"
             android:layout_gravity="fill_horizontal"
             android:maxLength="2"
+            android:focusable="false"
             android:hint="@string/month_text"/>
         <EditText
             android:id="@+id/task_day"
@@ -43,19 +45,22 @@
             android:imeOptions="actionNext"
             android:layout_gravity="fill_horizontal"
             android:maxLength="2"
+            android:focusable="false"
             android:hint="@string/day_text"/>
     </TableRow>
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <EditText
             android:id="@+id/task_start_time"
-            android:inputType="number"
+            android:inputType="none"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionNext"
             android:layout_span="1"
+            android:focusable="false"
             android:hint="@string/start_time"/>
         <EditText
             android:id="@+id/task_duration"
@@ -72,12 +77,14 @@
         android:layout_height="wrap_content">
         <EditText
             android:id="@+id/task_title"
-            android:inputType="text"
+            android:inputType="textCapSentences|textAutoComplete|textAutoCorrect"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:imeOptions="actionNext"
             android:layout_gravity="start"
             android:layout_span="3"
+            android:maxLines="1"
+            android:maxLength="50"
             android:hint="@string/title_text"/>
     </TableRow>
     <TableRow
@@ -85,7 +92,8 @@
         android:layout_height="wrap_content">
         <EditText
             android:id="@+id/task_description"
-            android:inputType="text|textMultiLine"
+            android:inputType="textCapSentences|textMultiLine"
+            android:autoText="true"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:minLines="2"
