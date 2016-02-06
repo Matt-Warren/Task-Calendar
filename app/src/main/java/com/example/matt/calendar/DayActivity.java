@@ -53,7 +53,7 @@ public class DayActivity extends AppCompatActivity implements ActivityFragment.O
                 newAct.setDuration(item.getDuration());
                 newAct.setTime(item.getTime());
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                ft.add(screen.getId(),newAct,"test").commit();
+                ft.add(screen.getId(),newAct).commit();
             }
         }
         else
