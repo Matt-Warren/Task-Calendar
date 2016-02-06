@@ -14,6 +14,8 @@ public class MonthCalendar extends AppCompatActivity {
 
     CalendarView calendar;
     Button bViewDate;
+    Button bViewTask;
+
     public int year;
     public int month;
     public int day;
@@ -27,8 +29,24 @@ public class MonthCalendar extends AppCompatActivity {
         bViewDate.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View v) {   //go to the date view part here
-                Toast.makeText(getApplicationContext(),date + "---" + day + "/" + (month+1) + "/" + year, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Going to day sending: " + day + "/" + (month+1) + "/" + year, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), DayActivity.class);
+                Bundle bExtras = new Bundle();
+
+                bExtras.putInt("year", year);
+                bExtras.putInt("month", month);
+                bExtras.putInt("day", day);
+
+                intent.putExtras(bExtras);
+                startActivity(intent);
+            }
+        });
+        bViewTask = (Button) findViewById(R.id.view_task);
+        bViewTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"Going to task sending: " + day + "/" + (month+1) + "/" + year, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), TaskActivity.class);
                 Bundle bExtras = new Bundle();
 
                 bExtras.putInt("year", year);
