@@ -52,7 +52,7 @@ public class TaskActivity extends AppCompatActivity {
         Bundle values = getIntent().getExtras();
 
         tYear = values.getInt("year");
-        tMonth = (values.getInt("month") + 1);
+        tMonth = (values.getInt("month"));
         tDay = values.getInt("day");
 
         test        = (EditText)findViewById(R.id.task_test);
@@ -83,7 +83,7 @@ public class TaskActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         taskYear.setText(Integer.toString(year));
-                        taskMonth.setText(Integer.toString(monthOfYear + 1));
+                        taskMonth.setText(Integer.toString(monthOfYear));
                         taskDay.setText(Integer.toString(dayOfMonth));
                         tYear = year;
                         tMonth = monthOfYear;
@@ -135,12 +135,17 @@ public class TaskActivity extends AppCompatActivity {
         bAddTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tYear = Integer.parseInt(((taskYear.getText().toString().equals(""))? "0" : taskYear.getText().toString()));
-                tMonth = Integer.parseInt(((taskMonth.getText().toString().equals(""))? "0" : taskMonth.getText().toString()));
-                tDay = Integer.parseInt(((taskDay.getText().toString().equals(""))? "0" : taskDay.getText().toString()));
+                tYear = Integer.parseInt(((taskYear.getText().toString().equals("")) ? "0" : taskYear.getText().toString()));
+                tMonth = Integer.parseInt(((taskMonth.getText().toString().equals("")) ? "0" : taskMonth.getText().toString()));
+                tDay = Integer.parseInt(((taskDay.getText().toString().equals("")) ? "0" : taskDay.getText().toString()));
                 title = taskTitle.getText().toString();
                 description = taskDesc.getText().toString();
                 duration = Integer.parseInt(((taskDur.getText().toString().equals(""))? "0" : taskDur.getText().toString()));
+
+                Events events = Events.getInstance();
+                Event event = new Event(Integer.toString(startHour) + ":" + Integer.toString(startMin),description,Integer.toString(duration));
+                String date = Integer.toString(tYear) + Integer.toString(tMonth) + Integer.toString(tDay);
+                events.setEvent(date,event);
 
                 test.setText("Added:\n\tYYYY/MM/DD: " + tYear + "/" + tMonth + "/" + tDay + "\n\tStarting Time: " + startHour + ":" + ((startMin < 10) ? "0"+startMin : startMin) + ((isAM) ? " AM" : " PM") + "\n\tDuration: " + duration + "\n\tTitle: " + title + "\n\tDescription: " + description);
             }

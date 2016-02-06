@@ -42,7 +42,7 @@ public class MonthCalendar extends AppCompatActivity {
 
                 bExtras.putInt("year", ((year==0) ? calendar.get(Calendar.YEAR) : year) );
 
-                bExtras.putInt("month", ((month==0) ? calendar.get(Calendar.MONTH) : month));
+                bExtras.putInt("month", ((month==0) ? calendar.get(Calendar.MONTH) : month+1));
                 bExtras.putInt("day", ((day==0) ? calendar.get(Calendar.DAY_OF_MONTH) : day));
                 Toast.makeText(getApplicationContext(), "Going to date sending: " + ((day == 0) ? calendar.get(Calendar.DAY_OF_MONTH) : day) + "/" + (((month == 0) ? calendar.get(Calendar.MONTH) : month) + 1) + "/" + ((year == 0) ? calendar.get(Calendar.YEAR) : year), Toast.LENGTH_SHORT).show();
                 intent.putExtras(bExtras);
@@ -59,7 +59,7 @@ public class MonthCalendar extends AppCompatActivity {
 
                 Calendar calendar = Calendar.getInstance();
                 bExtras.putInt("year", ((year == 0) ? calendar.get(Calendar.YEAR) : year));
-                bExtras.putInt("month", ((month == 0) ? calendar.get(Calendar.MONTH) : month));
+                bExtras.putInt("month", ((month == 0) ? calendar.get(Calendar.MONTH) : month+1));
                 bExtras.putInt("day", ((day == 0) ? calendar.get(Calendar.DAY_OF_MONTH) : day));
                 Toast.makeText(getApplicationContext(), "Going to task sending: " + ((day == 0) ? calendar.get(Calendar.DAY_OF_MONTH) : day) + "/" + (((month == 0) ? calendar.get(Calendar.MONTH) : month) + 1) + "/" + ((year == 0) ? calendar.get(Calendar.YEAR) : year), Toast.LENGTH_SHORT).show();
                 intent.putExtras(bExtras);
