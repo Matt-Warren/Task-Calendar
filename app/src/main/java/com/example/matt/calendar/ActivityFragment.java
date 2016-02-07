@@ -18,53 +18,23 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ActivityFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link ActivityFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ActivityFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
-
-
+    //Text Views for Time, description and duration
+    //Duration will come later
     TextView timeView, descriptionView, durationView;
-
+    //Strings for each text view
     private String time ="";
     private String description="";
     private String duration="";
 
-
-
     public ActivityFragment() {
-        // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ActivityFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ActivityFragment newInstance(String param1, String param2) {
+    //Creates a newInstance of this fragment
+    public static ActivityFragment newInstance() {
         ActivityFragment fragment = new ActivityFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -72,90 +42,70 @@ public class ActivityFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
-
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
+    //Called after the onCreate Method so that we can set the data in the textviews
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_activity, container, false);
+        //Get references for each text view
         timeView = (TextView) view.findViewById(R.id.time);
         descriptionView = (TextView) view.findViewById(R.id.description);
         durationView = (TextView) view.findViewById(R.id.duration);
+        //Fill the text views with the values of this class
         fillData();
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        /*if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }*/
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        try {
-            mListener = (OnFragmentInteractionListener) getActivity();
-        } catch (ClassCastException e) {
-            throw new ClassCastException(getActivity().toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
     }
 
+    //Setter for the time value
     public void setTime(String time) {
         this.time = time;
     }
 
-    public static String getArgParam1() {
-        return ARG_PARAM1;
-    }
-
+    //Getter for the description value
     public String getDescription() {
         return description;
     }
 
+    //Setter of the Description value
     public void setDescription(String description) {
         this.description = description;
     }
 
+    //Getter for the duration value
     public String getDuration() {
         return duration;
     }
 
+    //Setter of the duration value
     public void setDuration(String duration) {
         this.duration = duration;
     }
 
+    //Getter for the time value
     public String getTime() {
         return time;
     }
+
+    //Fills the text views with the corresponding data in the class
     private void fillData()
     {
         timeView.setText(time);
@@ -163,18 +113,8 @@ public class ActivityFragment extends Fragment {
         durationView.setText(duration);
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
+
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 }
