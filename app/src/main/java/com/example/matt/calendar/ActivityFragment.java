@@ -1,3 +1,11 @@
+/*
+ * File: ActivityFragment.java
+ * Assignment: Mobile Application Design Assignment 1
+ * Authors: Matt Warren & Steven Johnston
+ * Date: 2016/02/07
+ * Description: This file is for the fragments that outline the individual tasks.
+ */
+
 package com.example.matt.calendar;
 
 import android.content.Context;

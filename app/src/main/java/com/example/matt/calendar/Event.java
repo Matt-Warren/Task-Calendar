@@ -1,3 +1,11 @@
+/*
+ * File: Event.java
+ * Assignment: Mobile Application Design Assignment 1
+ * Authors: Matt Warren & Steven Johnston
+ * Date: 2016/02/07
+ * Description: This file is for
+ */
+
 package com.example.matt.calendar;
 
 public class Event {

@@ -1,18 +1,18 @@
+/*
+ * File: DayActivity.java
+ * Assignment: Mobile Application Design Assignment 1
+ * Authors: Matt Warren & Steven Johnston
+ * Date: 2016/02/07
+ * Description: This file is to show a daily view of the tasks that a user has created.
+ */
+
 package com.example.matt.calendar;
 
 import android.net.Uri;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Iterator;
 
 public class DayActivity extends AppCompatActivity implements ActivityFragment.OnFragmentInteractionListener {
@@ -38,7 +38,7 @@ public class DayActivity extends AppCompatActivity implements ActivityFragment.O
         year = values.getInt("year");
         month = values.getInt("month");
         day = values.getInt("day");
-        String date = new String();
+        String date;
         date = Integer.toString(year) + Integer.toString(month) + Integer.toString(day);
 
         ////////////////////////
